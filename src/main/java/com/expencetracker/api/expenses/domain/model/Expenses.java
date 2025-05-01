@@ -30,7 +30,8 @@ public class Expenses {
 
     private Boolean active = true;
 
-    @ManyToOne @JoinColumn(name = "users_ids")
+    @ManyToOne
+    @JoinColumn(name = "user_external_id", referencedColumnName = "external_id")
     private User user;
 
     public Expenses(ExpensesDto expensesDto) {

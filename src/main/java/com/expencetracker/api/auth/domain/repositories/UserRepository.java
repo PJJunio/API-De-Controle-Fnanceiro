@@ -3,5 +3,9 @@ package com.expencetracker.api.auth.domain.repositories;
 import com.expencetracker.api.auth.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+import java.util.UUID;
+
+public interface UserRepository extends JpaRepository<User, UUID> {
+    Optional<User> findByExternalId(UUID externalId);
 }

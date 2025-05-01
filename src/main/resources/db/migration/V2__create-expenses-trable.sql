@@ -5,6 +5,5 @@ CREATE TABLE expenses (
     amounts NUMERIC(10, 2) NOT NULL,
     categories VARCHAR(50) NOT NULL,
     active BOOLEAN DEFAULT FALSE NOT NULL,
-    users_ids INTEGER,
-    CONSTRAINT fk_user_expense FOREIGN KEY (users_ids) REFERENCES users(users_ids)
+    user_external_id UUID REFERENCES users(external_id)
 );

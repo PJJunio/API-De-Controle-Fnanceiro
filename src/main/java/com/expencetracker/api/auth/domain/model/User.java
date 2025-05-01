@@ -10,8 +10,9 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "User")
 @Table(name = "users")
+@EqualsAndHashCode(of = "externalId")
 public class User {
 
     @Id
@@ -20,7 +21,7 @@ public class User {
     private Long id;
 
     @Column(name = "external_id", nullable = false, updatable = false)
-    private UUID external_id;
+    private UUID externalId;
 
     @Column(name = "usernames", unique = true, nullable = false)
     private String names;
@@ -34,7 +35,7 @@ public class User {
     public User(UserDto userDto) {
         this.names = userDto.names();
         this.passwords = userDto.passwords();
-        this.external_id = UUID.randomUUID();
+        this.externalId = UUID.randomUUID();
     }
 
     public void attempts() {
